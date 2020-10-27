@@ -6,7 +6,13 @@ import QuizCard from "./components/QuizCard";
 import { getQuestions } from "./utils/api";
 
 function App() {
+  const Score = createElement("div", {
+    className: "score",
+    innerText: "Score: ",
+  });
+
   const header = Header();
+
   const button = createElement("button", {
     innerText: "Next question",
     className: "nextButton",
@@ -31,7 +37,7 @@ function App() {
     quizContainer.innerHTML = "";
     quizContainer.append(...questionCard);
   }
-  main.append(quizContainer, button);
+  main.append(Score, quizContainer, button);
 
   const container = createElement("div", {
     className: "container",
