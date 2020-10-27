@@ -1,5 +1,6 @@
 import { createElement } from "../utils/elements";
 import "./quizCard.css";
+
 function AnswerContainer(answers, correct_answer) {
   let score = 0;
   const correctBonus = 10;
@@ -21,6 +22,7 @@ function AnswerContainer(answers, correct_answer) {
         if (element === correct_answer) {
           button.classList.add("correct__answer");
           incrementScore(correctBonus);
+          console.log(score);
         } else {
           button.classList.add("incorrect__answer");
         }
@@ -29,8 +31,8 @@ function AnswerContainer(answers, correct_answer) {
     return button;
   });
 
-  function incrementScore(num) {
-    score += num;
+  function incrementScore(bonus) {
+    score += bonus;
     document.querySelector(".score").innerText = "Score: " + score;
   }
 
