@@ -1,9 +1,12 @@
 import { createElement } from "../utils/elements";
 import "./quizCard.css";
+import storeScore from "../utils/storeScore";
+import getScore from "../utils/getScore";
 
 function AnswerContainer(answers, correct_answer) {
   let score = 0;
-  const correctBonus = 10;
+  let playerScore = score;
+  let RecentScore = null;
   const allAnswers = [...answers];
 
   allAnswers.push(correct_answer);
@@ -21,8 +24,10 @@ function AnswerContainer(answers, correct_answer) {
       onclick: function () {
         if (element === correct_answer) {
           button.classList.add("correct__answer");
-          incrementScore(correctBonus);
-          console.log(score);
+          storeScore(playerScore, 1);
+          RecentScore = getScore(RecentScore);
+          document.querySelector(".score").innerText =
+            "Score: " + getScore(RecentScore);
         } else {
           button.classList.add("incorrect__answer");
         }
@@ -30,11 +35,6 @@ function AnswerContainer(answers, correct_answer) {
     });
     return button;
   });
-
-  function incrementScore(bonus) {
-    score += bonus;
-    document.querySelector(".score").innerText = "Score: " + score;
-  }
 
   const answerContainer = createElement("div", {
     className: "quizCard__answers",

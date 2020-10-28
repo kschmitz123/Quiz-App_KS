@@ -16,7 +16,9 @@ function App() {
   const button = createElement("button", {
     innerText: "Next question",
     className: "nextButton",
-    onclick: () => loadAllQuestions(1),
+    onclick: async function () {
+      await loadAllQuestions(1);
+    },
   });
 
   const quizContainer = createElement("div", {
