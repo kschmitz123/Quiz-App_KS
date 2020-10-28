@@ -8,7 +8,7 @@ import { getQuestions } from "./utils/api";
 function App() {
   const Score = createElement("div", {
     className: "score",
-    innerText: "Score: ",
+    innerText: "Score: 0",
   });
 
   const header = Header();

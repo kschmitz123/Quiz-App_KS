@@ -4,9 +4,8 @@ import storeScore from "../utils/storeScore";
 import getScore from "../utils/getScore";
 
 function AnswerContainer(answers, correct_answer) {
-  let score = 0;
-  let playerScore = score;
-  let RecentScore = null;
+  let playerScore = "score";
+
   const allAnswers = [...answers];
 
   allAnswers.push(correct_answer);
@@ -25,9 +24,9 @@ function AnswerContainer(answers, correct_answer) {
         if (element === correct_answer) {
           button.classList.add("correct__answer");
           storeScore(playerScore, 1);
-          RecentScore = getScore(RecentScore);
+
           document.querySelector(".score").innerText =
-            "Score: " + getScore(RecentScore);
+            "Score: " + getScore(playerScore);
         } else {
           button.classList.add("incorrect__answer");
         }
